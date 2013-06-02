@@ -1,0 +1,30 @@
+﻿@model SportsStore.Web.UI.Models.ProductDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="span4">
+    <img src="//placehold.it/450x300" alt="detail img" />
+</div>
+<div class="span5">
+    <h3 class="muted">@Model.Product.Name</h3>
+    <p>
+        @Model.Product.Description
+    </p>
+    <p>
+        <span class="muted">Price: </span>@Model.Product.Price.ToString("c")
+    </p>
+    <p>
+        @using (Html.BeginForm("AddToCart", "Cart"))
+        {
+            @Html.Hidden("id", Model.Product.Id)
+            @Html.Hidden("returnUrl", (object)ViewBag.ReturnUrl)
+            @Html.DropDownList("quantity", Enumerable.Range(1, 10).ToSelectListItem(Model.Quantity))
+            @Form.Submit("+ Add")
+        }
+    </p>
+    <p>
+        <a href="@ViewBag.ReturnUrl" class="btn btn-inverse">Continue shopping</a>
+    </p>
+</div>

@@ -1,0 +1,13 @@
+﻿@model SportsStore.Core.Contracts.Models.Product
+
+<div class="span3 pull-left">
+    <a href="@Url.Action("Details", "Product", new { id = Model.Id, returnUrl = Request.Url.PathAndQuery })" class="thumbnail">
+        <img src="//placehold.it/260x180" alt="260x180"  />
+    </a>
+</div>
+
+<div class="span6">
+    <h3>@Model.Name</h3>
+    @Model.Description
+    <h4>@Model.Price.ToString("c")</h4>
+</div>

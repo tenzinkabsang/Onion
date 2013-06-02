@@ -1,0 +1,13 @@
+﻿@model SportsStore.Core.Contracts.Models.Cart
+
+<div id="cart">
+
+    <a href="@Url.Action("Index", "Cart", new { returnUrl = Request.Url.PathAndQuery })">
+        <span>
+            <b>Your cart:</b>
+            @Model.Lines.Sum(x => x.Quantity) item(s),
+            @Model.ComputeTotalValue().ToString("c")
+        </span>
+    </a>
+</div>
+
