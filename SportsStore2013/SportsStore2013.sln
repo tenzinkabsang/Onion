@@ -28,6 +28,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{AF69FB
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsStore.Infrastructure.Data.Tests", "SportsStore.Infrastructure.Data.Tests\SportsStore.Infrastructure.Data.Tests.csproj", "{25F8AF05-B8FC-49C2-9618-A27B9F73A49A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{62562DB4-2BDA-4CED-AB5F-FF76DF0D6522}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62562DB4-2BDA-4CED-AB5F-FF76DF0D6522}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62562DB4-2BDA-4CED-AB5F-FF76DF0D6522}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25F8AF05-B8FC-49C2-9618-A27B9F73A49A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25F8AF05-B8FC-49C2-9618-A27B9F73A49A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25F8AF05-B8FC-49C2-9618-A27B9F73A49A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25F8AF05-B8FC-49C2-9618-A27B9F73A49A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,5 +79,6 @@ Global
 		{3C7F8DA0-8C19-4C36-BA6F-EB38A44C07B0} = {89E8EF24-D68B-4A6E-B641-23B895973652}
 		{FAD61D8F-0B56-44C8-B34E-5118FDF62DC6} = {89E8EF24-D68B-4A6E-B641-23B895973652}
 		{01795BED-A538-43AC-BF6D-7A47EA3B421C} = {2845517A-D4AB-45E5-9EDF-17CAFC9151C8}
+		{25F8AF05-B8FC-49C2-9618-A27B9F73A49A} = {2845517A-D4AB-45E5-9EDF-17CAFC9151C8}
 	EndGlobalSection
 EndGlobal

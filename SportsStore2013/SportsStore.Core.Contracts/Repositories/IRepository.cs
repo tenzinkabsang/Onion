@@ -5,11 +5,13 @@ using SportsStore.Core.Contracts.Models;
 
 namespace SportsStore.Core.Contracts.Repositories
 {
-    public interface IRepository<T> where T: TEntity
+    public interface IRepository<T> where T : TEntity
     {
         IList<T> GetAll();
 
         IList<T> GetAllIncluding(params Expression<Func<T, object>>[] includeProperties);
+
+        //IList<T> GetAllFull();
 
         T GetById(int id);
 

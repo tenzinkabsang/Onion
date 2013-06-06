@@ -13,7 +13,7 @@ namespace SportsStore.Web.UI.Binders
         private const string sessionKey = "Cart";
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
-            Contract.Requires<NullReferenceException>(controllerContext.HttpContext.Session != null, "Not in web context");
+           // Contract.Requires<NullReferenceException>(controllerContext.HttpContext.Session != null, "Not in web context");
 
             // Attempt to get the Cart from the session
             Cart cart = (Cart)controllerContext.HttpContext.Session[sessionKey];

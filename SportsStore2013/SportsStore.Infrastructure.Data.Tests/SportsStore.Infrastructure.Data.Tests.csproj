@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{62562DB4-2BDA-4CED-AB5F-FF76DF0D6522}</ProjectGuid>
+    <ProjectGuid>{25F8AF05-B8FC-49C2-9618-A27B9F73A49A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SportsStore.Core.Tests</RootNamespace>
-    <AssemblyName>SportsStore.Core.Tests</AssemblyName>
+    <RootNamespace>SportsStore.Infrastructure.Data.Tests</RootNamespace>
+    <AssemblyName>SportsStore.Infrastructure.Data.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -37,10 +37,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data.Entity" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -55,7 +60,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Models\CartTests.cs" />
+    <Compile Include="CacheProductRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,8 +68,13 @@
       <Project>{2bc12f86-048d-42b4-bdde-c8ed837323f0}</Project>
       <Name>SportsStore.Core.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SportsStore.Infrastructure.Data\SportsStore.Infrastructure.Data.csproj">
+      <Project>{01795bed-a538-43ac-bf6d-7a47ea3b421c}</Project>
+      <Name>SportsStore.Infrastructure.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Choose>

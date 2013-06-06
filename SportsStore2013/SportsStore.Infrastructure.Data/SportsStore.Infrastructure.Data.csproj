@@ -72,6 +72,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -80,9 +81,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CachedProductRepository.cs" />
+    <Compile Include="Caches\ProductCache.cs" />
     <Compile Include="CategoryRepository.cs" />
     <Compile Include="EFDbContext.cs" />
     <Compile Include="EFRepository.cs" />
+    <Compile Include="Caches\HttpCache.cs" />
+    <Compile Include="Interfaces\ICache.cs" />
+    <Compile Include="Interfaces\ICacheDependencyFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

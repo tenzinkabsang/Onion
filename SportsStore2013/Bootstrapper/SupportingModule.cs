@@ -5,6 +5,8 @@ using SportsStore.Core.Contracts;
 using SportsStore.Core.Contracts.Models;
 using SportsStore.Core.Contracts.Repositories;
 using SportsStore.Infrastructure.Data;
+using SportsStore.Infrastructure.Data.Caches;
+using SportsStore.Infrastructure.Data.Interfaces;
 
 namespace Bootstrapper
 {
@@ -36,9 +38,15 @@ namespace Bootstrapper
             // This should handle all the generic repositories
             Bind(typeof(IRepository<>)).To(typeof(EFRepository<>));
 
+            Bind<IRepository<Product>>().To<EFRepository<Product>>()
+                                        .WhenInjectedInto<CachedProductRepository>();
+
             Bind<IRepository<Product>>().To<CachedProductRepository>();
+                
 
             Bind<ICategoryRepository>().To<CategoryRepository>();
+
+            Bind<ICache>().To<ProductCache>().WithConstructorArgument("duration", 20);
         }
     }
 }
