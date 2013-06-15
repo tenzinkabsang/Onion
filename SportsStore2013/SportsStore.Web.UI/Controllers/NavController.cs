@@ -23,5 +23,13 @@ namespace SportsStore.Web.UI.Controllers
 
             return PartialView(categories);
         }
+
+        public PartialViewResult AdminMenu(string category = null)
+        {
+            ViewBag.SelectedCategory = category;
+            IEnumerable<string> categories = _categories.GetCategoryNames();
+
+            return PartialView(categories);
+        }
     }
 }

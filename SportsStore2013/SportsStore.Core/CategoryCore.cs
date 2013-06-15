@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using SportsStore.Core.Contracts;
+using SportsStore.Core.Contracts.Models;
 using SportsStore.Core.Contracts.Repositories;
 
 namespace SportsStore.Core
@@ -17,6 +18,11 @@ namespace SportsStore.Core
         {
             IList<string> names = _categories.GetCategoryNames();
             return names;
+        }
+
+        public IList<Category> GetAllCategories()
+        {
+            return _categories.GetAll();
         }
     }
 }

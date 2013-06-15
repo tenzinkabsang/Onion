@@ -9,8 +9,16 @@ namespace SportsStore.Core.Contracts
 
         IList<Product> GetProductsForCategoryName(string categoryName);
 
-        Product GetProductFor(int productId);
+        Product GetProductById(int productId);
 
         void ProcessOrder(Cart cart, ShippingDetails shippingDetails);
+
+        IProductCore Save(Product product);
+
+        IProductCore Delete(int id);
+
+        void Commit();
+
+        void RefreshProductCache();
     }
 }

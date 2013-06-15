@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+
+        .sidebar-nav {
+            padding: 9px 0;
+        }
+    </style>
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <section class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand" href="#">Sports Store</a>
+                <div class="nav-collapse collapse">
+                    <p class="navbar-text pull-right">
+                        @*Logged in as <a href="#" class="navbar-link">Username</a>*@
+                    </p>
+                    <ul class="nav">
+                        @*                            <li class="active"><a href="#">Home</a></li>
+                            <li class="active"><a href="#">Home</a></li>
+                            <li class="active"><a href="#">Home</a></li>*@
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid">
+        <div class="row-fluid">
+            <div class="span3">
+                <div class="well sidebar-nav">
+                    @{Html.RenderAction("AdminMenu", "Nav");}
+                </div>
+            </div>
+            <div class="span9">
+                <div class="well well-small">
+                    <!-- Search bar -->
+                    <form class="form-search">
+                        
+                        <input type="text" class="input-medium search-query" placeholder="Search Products"/>
+                        <button type="submit" class="btn">Search</button>
+                    </form>
+
+                </div>
+                @RenderBody()
+            </div>
+        </div>
+    </section>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/app")
+    @RenderSection("scripts", required: false)
+    
+    <div>
+        @*@if (TempData["message"] != null)
+        {
+            <script>
+                toastr.success('@TempData["message"]')
+            </script>
+        }*@
+        
+        @Dialog.ShowToast(TempData)
+    </div>
+    
+   @* <script>
+        $(function() {
+            toastr.options.positionClass = "toast-bottom-right";
+        })
+    </script>*@
+</body>
+</html>

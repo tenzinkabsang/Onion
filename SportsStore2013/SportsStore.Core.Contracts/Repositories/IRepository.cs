@@ -17,12 +17,14 @@ namespace SportsStore.Core.Contracts.Repositories
 
         T GetByIdIncluding(int id, params Expression<Func<T, object>>[] includeProperties);
 
-        void Add(T entity);
+        void Add(T product);
 
-        void Update(T entity);
+        void Update(T product);
 
         void Delete(T entity);
 
         void Delete(int id);
+
+        void Commit();
     }
 }

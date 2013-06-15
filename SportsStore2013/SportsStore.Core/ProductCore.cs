@@ -9,10 +9,10 @@ namespace SportsStore.Core
 {
     public class ProductCore : IProductCore
     {
-        private readonly IRepository<Product> _products;
+        private readonly IProductRepository _products;
         private readonly IOrderProcessor _orderProcessor;
 
-        public ProductCore(IRepository<Product> products, IOrderProcessor orderProcessor)
+        public ProductCore(IProductRepository products, IOrderProcessor orderProcessor)
         {
             _products = products;
             _orderProcessor = orderProcessor;
@@ -31,7 +31,7 @@ namespace SportsStore.Core
                             .ToList();
         }
 
-        public Product GetProductFor(int productId)
+        public Product GetProductById(int productId)
         {
             return _products.GetByIdIncluding(productId, p => p.Category);
         }
@@ -39,6 +39,44 @@ namespace SportsStore.Core
         public void ProcessOrder(Cart cart, ShippingDetails shippingDetails)
         {
             _orderProcessor.ProcessOrder(cart, shippingDetails);
+        }
+
+        //public void Save(Product product)
+        //{
+        //    if (product.Id == 0)
+        //        _products.Add(product);
+        //    else
+        //        _products.Update(product);
+
+        //    // commit these changes
+        //    _products.Commit();
+        //}
+
+        public IProductCore Save(Product product)
+        {
+            if (product.Id == 0)
+                _products.Add(product);
+            else
+                _products.Update(product);
+
+            return this;
+        }
+
+        public IProductCore Delete(int id)
+        {
+            _products.Delete(id);
+
+            return this;
+        }
+
+        public void Commit()
+        {
+            _products.Commit();
+        }
+
+        public void RefreshProductCache()
+        {
+            _products.ClearProductsCache();
         }
     }
 }

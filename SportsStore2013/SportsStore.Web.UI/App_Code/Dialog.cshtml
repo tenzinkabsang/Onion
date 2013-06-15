@@ -1,0 +1,28 @@
+﻿@using System.Web.Mvc
+@using SportsStore.Web.UI.Models
+
+@helper ShowToast(TempDataDictionary tempData)
+{
+    Message message = tempData["message"] as Message;
+    if (message != null)
+    {
+        switch (message.MessageType)
+        {
+            case MessageType.Success:
+                <script>toastr.success("@message.Value")</script>
+                break;
+                
+            case MessageType.Info:
+                <script>toastr.info("@message.Value")</script>
+                break;
+
+            case MessageType.Warning:
+                <script>toastr.warning("@message.Value")</script>
+                break;
+
+            case MessageType.Error:
+                <script>toastr.error("@message.Value")</script>
+                break;
+        }
+    }
+}

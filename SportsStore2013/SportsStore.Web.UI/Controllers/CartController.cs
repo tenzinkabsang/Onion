@@ -31,7 +31,7 @@ namespace SportsStore.Web.UI.Controllers
 
         public RedirectToRouteResult AddToCart(Cart cart, int id, int quantity, string returnUrl)
         {
-            Product product = _products.GetProductFor(id);
+            Product product = _products.GetProductById(id);
 
             if(product != null)
                 cart.AddItem(product, quantity);
@@ -41,7 +41,7 @@ namespace SportsStore.Web.UI.Controllers
 
         public RedirectToRouteResult RemoveFromCart(Cart cart, int id, string returnUrl)
         {
-            Product product = _products.GetProductFor(id);
+            Product product = _products.GetProductById(id);
 
             if(product != null)
                 cart.RemoveLine(product);

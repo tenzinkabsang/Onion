@@ -1,0 +1,51 @@
+﻿@model SportsStore.Web.UI.Models.ProductsListViewModel
+
+@{
+    ViewBag.Title = "Products";
+}
+
+<p>
+    @Html.ActionLink("Add New Product", "Create", new { returnUrl = Request.Url.PathAndQuery }, new { @class = "btn btn-large btn-success" })
+    <a href="#cacheWarning" role="button" class="btn btn-large btn-warning" data-toggle="modal">Refresh Cache</a>
+</p>
+
+@Html.Partial("_CacheWarningModal")
+
+<table class="table table-condensed table-hover table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var product in Model.Products)
+    {
+        <tr>
+            <td>
+                @product.Id
+            </td>
+            <td>
+                @Html.ActionLink(product.Name, "Edit", new { product.Id, returnUrl = Request.Url.PathAndQuery })
+            </td>
+            <td>
+                @product.Price.ToString("c")
+            </td>
+            <td>
+                @product.Category.Name
+            </td>
+            <td>
+                @using (Html.BeginForm("Delete", "Admin"))
+                {
+                    @Html.Hidden("Id", product.Id)
+                    @Form.Submit("Delete", "btn-danger")
+                }
+            </td>
+        </tr>
+    }
+</table>
+
+<div class="pagination pagination-centered">
+    @Html.PageLinks(Model.PagingInfo, p => Url.Action("List", new { category = Model.CurrentCategory, page = p }))
+</div>
+

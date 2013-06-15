@@ -9,45 +9,16 @@ using SportsStore.Web.UI.Models;
 
 namespace SportsStore.Web.UI.Controllers
 {
-    public class ProductController : Controller
+    public class ProductController : BaseProductController
     {
-        private readonly IProductCore _products;
-
-        public int PageSize = 4;
-
         public ProductController(IProductCore products)
+            : base(products)
         {
-            _products = products;
-        }
-
-        public ActionResult List(string category, int page = 1)
-        {
-            IList<Product> products = _products.GetProductsForCategoryName(category);
-
-            var productsToDisplay = products
-                                        .OrderBy(p => p.Id)
-                                        .Skip((page - 1) * PageSize)
-                                        .Take(PageSize)
-                                        .ToList();
-
-            PagingInfo pagingInfo = new PagingInfo
-            {
-                CurrentPage = page,
-                ItemsPerPage = PageSize,
-                TotalItems = products.Count
-            };
-            ProductsListViewModel viewModel = new ProductsListViewModel
-            {
-                Products = productsToDisplay,
-                PagingInfo = pagingInfo,
-                CurrentCategory = category
-            };
-            return View(viewModel);
         }
 
         public ActionResult Details(int id, string returnUrl)
         {
-            Product product = _products.GetProductFor(id);
+            Product product = _products.GetProductById(id);
 
             ProductDetail viewModel = new ProductDetail(product);
 

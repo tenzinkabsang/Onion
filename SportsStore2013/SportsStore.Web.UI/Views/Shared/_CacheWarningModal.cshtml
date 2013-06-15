@@ -1,0 +1,15 @@
+﻿
+<div id="cacheWarning" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3 id="modalLabel">Refresh Cache</h3>
+    </div>
+    <div class="modal-body">
+        This will cause all the products to be reloaded from the database. Only proceed if you're 100% sure!
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        @Html.ActionLink("Proceed", "RefreshCache", new { category = Model.CurrentCategory }, new { @class = "btn btn-primary" })
+    </div>
+</div>
+

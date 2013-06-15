@@ -10,7 +10,7 @@ namespace SportsStore.Web.UI.Infrastructure
     {
         public override void Load()
         {
-
+            
         }
     }
 }

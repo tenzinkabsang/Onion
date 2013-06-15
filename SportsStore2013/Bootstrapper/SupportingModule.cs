@@ -41,8 +41,9 @@ namespace Bootstrapper
             Bind<IRepository<Product>>().To<EFRepository<Product>>()
                                         .WhenInjectedInto<CachedProductRepository>();
 
-            Bind<IRepository<Product>>().To<CachedProductRepository>();
-                
+            //Bind<IRepository<Product>>().To<CachedProductRepository>();
+
+            Bind<IProductRepository>().To<CachedProductRepository>();
 
             Bind<ICategoryRepository>().To<CategoryRepository>();
 

@@ -13,11 +13,11 @@ namespace SportsStore.Infrastructure.Data.Caches
 
         public HttpCache(int duration)
         {
-            Contract.Requires<NullReferenceException>(HttpContext.Current != null,
-                "HttpContext does not exists");
+            Contract.Requires<NullReferenceException>(HttpRuntime.Cache != null, "HttpRuntime does not exists");
 
             _defaultDuration = duration;
-            WebCache = HttpContext.Current.Cache;
+            //WebCache = HttpContext.Current.Cache;
+            WebCache = HttpRuntime.Cache;
         }
 
         public T Get<T>(string key) where T : class

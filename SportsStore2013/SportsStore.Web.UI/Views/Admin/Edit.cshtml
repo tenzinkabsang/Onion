@@ -1,0 +1,68 @@
+﻿@model SportsStore.Web.UI.Models.ProductEditViewModel
+
+@{
+    ViewBag.Title = "Edit Product";
+}
+
+<h2>Edit: @Model.Product.Name</h2>
+
+@using (Html.BeginForm("Edit", "Admin"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(x => x.Product.Id)
+    <fieldset>
+        <legend>Product</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Product.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.Name)
+            @Html.ValidationMessageFor(model => model.Product.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Product.Description)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Product.Description, 5, 50, new{@class="input-xlarge"})
+            @Html.ValidationMessageFor(model => model.Product.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Product.Price)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.Price)
+            @Html.ValidationMessageFor(model => model.Product.Price)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Product.CategoryId)
+        </div>
+        <div class="editor-field">
+            @* @Html.EditorFor(model => model.Product.CategoryId)*@
+            @Html.DropDownListFor(x => x.Product.CategoryId, Model.Categories.ToSelectListItem(Model.Product.CategoryId))
+
+            @Html.ValidationMessageFor(model => model.Product.CategoryId)
+        </div>
+
+
+        <div>
+            <p>
+                <a href="@Model.ReturnUrl" class="btn">Back</a>
+                @Form.Submit("Save Changes")
+            </p>
+        </div>
+
+    </fieldset>
+}
+
+<div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -19,7 +19,7 @@ namespace SportsStore.Web.UI.Tests.Controllers
         {
             // Arrange
             var mock = new Mock<IProductCore>();
-            mock.Setup(m => m.GetProductFor(It.IsAny<int>())).Returns(new Product { Id = 1, Name = "P1" });
+            mock.Setup(m => m.GetProductById(It.IsAny<int>())).Returns(new Product { Id = 1, Name = "P1" });
             Cart cart = new Cart();
 
             CartController target = new CartController(mock.Object);
@@ -37,7 +37,7 @@ namespace SportsStore.Web.UI.Tests.Controllers
         {
             // Arrange
             var mock = new Mock<IProductCore>();
-            mock.Setup(m => m.GetProductFor(It.IsAny<int>())).Returns(new Product { Id = 1, Name = "P1" });
+            mock.Setup(m => m.GetProductById(It.IsAny<int>())).Returns(new Product { Id = 1, Name = "P1" });
             Cart cart = new Cart();
 
             CartController target = new CartController(mock.Object);

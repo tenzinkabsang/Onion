@@ -56,20 +56,20 @@ namespace SportsStore.Infrastructure.Data
             return result;
         }
 
-        public virtual void Add(T entity)
+        public virtual void Add(T product)
         {
-            DbEntityEntry dbEntityEntry = _context.Entry(entity);
+            DbEntityEntry dbEntityEntry = _context.Entry(product);
             if (dbEntityEntry.State != EntityState.Detached)
                 dbEntityEntry.State = EntityState.Added;
             else
-                DbSet.Add(entity);
+                DbSet.Add(product);
         }
 
-        public virtual void Update(T entity)
+        public virtual void Update(T product)
         {
-            DbEntityEntry dbEntityEntry = _context.Entry(entity);
+            DbEntityEntry dbEntityEntry = _context.Entry(product);
             if (dbEntityEntry.State == EntityState.Deleted)
-                DbSet.Attach(entity);
+                DbSet.Attach(product);
 
             dbEntityEntry.State = EntityState.Modified;
         }
@@ -92,6 +92,12 @@ namespace SportsStore.Infrastructure.Data
             if (entity == null)
                 return; // not found; assume already deleted.
             Delete(entity);
+        }
+
+
+        public void Commit()
+        {
+            _context.SaveChanges();
         }
     }
 }
